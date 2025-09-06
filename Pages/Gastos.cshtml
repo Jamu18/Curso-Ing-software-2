@@ -1,0 +1,59 @@
+﻿@page
+@model proyectojurado.Pages.GastosModel
+@{
+    ViewData["Title"] = "Mis Gastos";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Registrar Gasto</h2>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <div class="alert alert-success">@Model.Message</div>
+        }
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" class="form-control" asp-for="Descripcion" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Monto</label>
+                <input type="number" step="0.01" class="form-control" asp-for="Monto" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control" asp-for="Fecha" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Gasto</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Lista de Gastos</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var gasto in Model.MisGastos)
+                {
+                    <tr>
+                        <td>@gasto.Descripcion</td>
+                        <td>@gasto.Monto</td>
+                        <td>@gasto.Fecha.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

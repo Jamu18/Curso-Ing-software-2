@@ -1,0 +1,18 @@
+﻿@page
+@model proyectojurado.Pages.IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<h2>Bienvenido</h2>
+
+@if (HttpContext.Session.GetString("UsuarioNombre") != null)
+{
+    <p>Hola, @HttpContext.Session.GetString("UsuarioNombre") 👋</p>
+}
+else
+{
+    <p>No has iniciado sesión.</p>
+}
+
+

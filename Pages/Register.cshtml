@@ -1,0 +1,33 @@
+﻿@page
+@model proyectojurado.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2>Registro de Usuario</h2>
+
+<form method="post">
+    <label>Nombre:</label>
+    <input type="text" asp-for="Nombre" required />
+    <br />
+
+    <label>Email:</label>
+    <input type="email" asp-for="Email" required />
+    <br />
+
+    <label>Contraseña:</label>
+    <input type="password" asp-for="Password" required />
+    <br />
+
+    <label>Moneda:</label>
+    <select asp-for="Moneda">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="COP">COP</option>
+    </select>
+    <br /><br />
+
+    <button type="submit">Registrar</button>
+</form>
+
+<p>@Model.Message</p>
